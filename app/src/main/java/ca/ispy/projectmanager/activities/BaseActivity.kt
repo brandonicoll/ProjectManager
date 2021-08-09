@@ -1,11 +1,12 @@
-package ca.ispy.projectmanager
+package ca.ispy.projectmanager.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import ca.ispy.projectmanager.R
 
-class MainActivity : AppCompatActivity() {
+class BaseActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_base)
     }
 }

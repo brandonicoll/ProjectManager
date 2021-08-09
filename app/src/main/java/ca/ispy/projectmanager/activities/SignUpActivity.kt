@@ -20,6 +20,10 @@ class SignUpActivity : BaseActivity() { //extend base activity
         )
 
         setupActionBar()
+
+        btn_sign_up.setOnClickListener{
+            registerUser()
+        }
     }
 
     private fun setupActionBar() {
@@ -33,7 +37,6 @@ class SignUpActivity : BaseActivity() { //extend base activity
         }
 
         toolbar_sign_up_activity.setNavigationOnClickListener { onBackPressed() }
-        btn_sign_up.setOnClickListener { registerUser() }
     }
 
     private fun registerUser(){

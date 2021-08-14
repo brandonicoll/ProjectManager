@@ -6,6 +6,8 @@ import android.text.TextUtils
 import android.view.WindowManager
 import android.widget.Toast
 import ca.ispy.projectmanager.R
+import ca.ispy.projectmanager.firebase.FirestoreClass
+import ca.ispy.projectmanager.models.User
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.AuthResult
@@ -70,18 +72,10 @@ class SignUpActivity : BaseActivity() { //extend base activity
                             // Registered Email
                             val registeredEmail = firebaseUser.email!!
 
-                            Toast.makeText(
-                                this@SignUpActivity,
-                                "$name you have successfully registered with the email $registeredEmail.",
-                                Toast.LENGTH_SHORT
-                            ).show()
+                            val user = User(firebaseUser.uid, name, registeredEmail)
+                            FirestoreClass().registerUser(this, user)
 
-                            /**
-                             * Here the new user registered is automatically signed-in so we just sign-out the user from firebase
-                             * and send him to Intro Screen for Sign-In
-                             */
-                            FirebaseAuth.getInstance().signOut()
-                            // Finish the Sign-Up Screen
+
                             finish()
                         } else {
                             Toast.makeText(

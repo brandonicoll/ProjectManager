@@ -7,6 +7,7 @@ import android.text.TextUtils
 import android.view.WindowManager
 import android.widget.Toast
 import ca.ispy.projectmanager.R
+import ca.ispy.projectmanager.models.User
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_sign_in.*
 
@@ -82,5 +83,16 @@ class SignInActivity : BaseActivity() {
                     }
                 }
         }
+    }
+
+    /**
+     * A function to get the user details from the firestore database after authentication.
+     */
+    fun signInSuccess(user: User) {
+
+        hideProgressDialog()
+
+        startActivity(Intent(this@SignInActivity, MainActivity::class.java))
+        finish()
     }
 }

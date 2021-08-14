@@ -21,6 +21,9 @@ class SignInActivity : BaseActivity() {
         )
 
         setupActionBar()
+        btn_sign_in.setOnClickListener {
+            signInRegisteredUser()
+        }
     }
 
     private fun setupActionBar() {

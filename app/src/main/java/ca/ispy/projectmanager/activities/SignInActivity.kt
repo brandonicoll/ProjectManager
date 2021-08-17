@@ -7,6 +7,7 @@ import android.text.TextUtils
 import android.view.WindowManager
 import android.widget.Toast
 import ca.ispy.projectmanager.R
+import ca.ispy.projectmanager.firebase.FirestoreClass
 import ca.ispy.projectmanager.models.User
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_sign_in.*
@@ -67,13 +68,9 @@ class SignInActivity : BaseActivity() {
                     hideProgressDialog()
                     if (task.isSuccessful) {
 
-                        Toast.makeText(
-                            this@SignInActivity,
-                            "You have successfully signed in.",
-                            Toast.LENGTH_LONG
-                        ).show()
+                        FirestoreClass().signInUser(this@SignInActivity)
 
-                        startActivity(Intent(this@SignInActivity, MainActivity::class.java))
+                        //startActivity(Intent(this@SignInActivity, MainActivity::class.java))
                     } else {
                         Toast.makeText(
                             this@SignInActivity,
